@@ -28,7 +28,7 @@ def send_telegram(message):
         print(f"Telegram error: {e}")
 
 def fetch_dexscreener_tokens():
-    url = "https://api.dexscreener.com/latest/dex/tokens/solana"
+    url = "https://api.dexscreener.com/token-profiles/latest/v1"
     try:
         r = requests.get(url, timeout=10)
         data = r.json()
@@ -64,7 +64,7 @@ def fetch_dexscreener_trending():
 def fetch_pumpfun_tokens():
     pairs = []
     try:
-        url = "https://frontend-api.pump.fun/coins/latest?limit=50&includeNsfw=false"
+        url = "https://frontend-api-v3.pump.fun/coins?limit=50&sort=created_timestamp&order=desc&includeNsfw=false"
         headers = {"User-Agent": "Mozilla/5.0"}
         r = requests.get(url, headers=headers, timeout=10)
         coins = r.json()
